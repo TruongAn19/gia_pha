@@ -1,0 +1,63 @@
+/* Fonts (import TRƯỚC directive Tailwind): Playfair Display · Inter · Noto Serif SC */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Serif+SC:wght@500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens (DESIGN_NOTES §1) — CSS variables (mirror trong tailwind.config.js) */
+:root {
+  --surface: #f5f2e9; /* nền trang */
+  --surface-card: #ffffff; /* thẻ/panel */
+  --surface-inverse: #2d2926; /* sidebar tối, monogram */
+  --surface-muted: #ede9dc; /* chip/nền phụ, hover */
+  --fg: #2d2926; /* chữ chính */
+  --fg-secondary: #5e5954; /* chữ phụ */
+  --fg-inverse: #f5f2e9; /* chữ trên nền tối */
+  --fg-inverse-muted: #a8a296; /* chữ mờ / placeholder */
+  --border-subtle: #dcd8cb; /* viền hairline */
+  --accent: #7d6b3d; /* nâu vàng — hành động chính */
+  --accent-soft: #c4bca6; /* đường nối cây, avatar phụ */
+  --danger: #9b4a3a;
+  --alive: #3e6b4f;
+  --alive-bg: #e4ede5;
+  --alive-fg: #2f5640;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--surface);
+  color: var(--fg);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* tiện ích font (cũng có trong tailwind theme) */
+.font-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+.font-han {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+}
+.font-serif {
+  font-family: 'Newsreader', Georgia, serif;
+}
+
+/* thanh cuộn mảnh */
+.gp-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.gp-scroll::-webkit-scrollbar-thumb {
+  background: #cfc9b8;
+  border-radius: 4px;
+}
+.gp-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
