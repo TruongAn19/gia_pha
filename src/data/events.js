@@ -7,51 +7,44 @@
  * Quy đổi âm lịch / tiết khí -> dương lịch để sắp lịch và đếm ngược.
  */
 import { allMembers, normalizeDeathAnniversary, removeDiacritics } from './genealogy'
+import { supabase } from '../lib/supabase'
 import { nextSolarForLunar, nextThanhMinh, daysUntil, solarToLunar, lunarMonthShort } from './lunar'
 
-const KEY = 'gp_events_v2'
 const MONTH_NAME = { giêng: 1, chap: 12, 'chạp': 12 }
 
 // Giỗ Đức Vua Ngô Quyền — ngày âm lịch (18 tháng Giêng, ngày mất năm 944).
 // Sửa tại đây nếu dòng họ dùng ngày khác.
 const NGO_QUYEN = { lunarDay: 18, lunarMonth: 1 }
 
-let store = null
-function load() {
-  if (store) return store
-  try {
-    const raw = typeof localStorage !== 'undefined' && localStorage.getItem(KEY)
-    store = raw ? JSON.parse(raw) : []
-  } catch {
-    store = []
+/** Lấy các sự kiện họ tự nhập từ Supabase. */
+export async function fetchEvents() {
+  const { data, error } = await supabase.from('events').select('*').order('lunar_month').order('lunar_day')
+  if (error) {
+    console.error('[events] fetch error:', error)
+    return []
   }
-  return store
-}
-function persist() {
-  try {
-    localStorage.setItem(KEY, JSON.stringify(store))
-  } catch {
-    /* ignore */
-  }
+  return (data || []).map((e) => ({
+    id: e.id,
+    title: e.title,
+    category: e.category,
+    place: e.place,
+    lunarDay: e.lunar_day,
+    lunarMonth: e.lunar_month,
+  }))
 }
 
-export function allEvents() {
-  return load().slice()
-}
-
-export function addEvent(e) {
-  load()
-  const item = {
-    id: `evt-${Date.now().toString(36)}`,
+/** Thêm 1 sự kiện họ vào Supabase. */
+export async function addEvent(e) {
+  const row = {
     title: e.title?.trim() || 'Sự kiện dòng họ',
     category: e.category?.trim() || 'Sự kiện họ',
     place: e.place?.trim() || '',
-    lunarDay: Number(e.lunarDay) || 1,
-    lunarMonth: Number(e.lunarMonth) || 1,
+    lunar_day: Number(e.lunarDay) || 1,
+    lunar_month: Number(e.lunarMonth) || 1,
   }
-  store.push(item)
-  persist()
-  return item
+  const { data, error } = await supabase.from('events').insert(row).select().single()
+  if (error) throw error
+  return data
 }
 
 /** "25-08" -> {day:25,month:8}; "19-Giêng" -> {day:19,month:1} */
@@ -72,7 +65,7 @@ const solarBadge = (d) => ({ big: String(d.getDate()).padStart(2, '0'), small: `
  * Dựng danh sách sự kiện sắp tới (đã quy đổi dương lịch, sắp theo ngày gần nhất).
  * kind: 'ancestor' (Giỗ Tổ đời đầu) | 'king' (Vua Ngô Quyền) | 'thanhminh' | 'event'
  */
-export function buildAgenda(from = new Date()) {
+export function buildAgenda(from = new Date(), customEvents = []) {
   const items = []
 
   // 1) Giỗ đời đầu (Thủy tổ, generation === 1)
@@ -134,8 +127,8 @@ export function buildAgenda(from = new Date()) {
     }
   }
 
-  // 4) Sự kiện họ tự nhập
-  for (const e of allEvents()) {
+  // 4) Sự kiện họ tự nhập (đã tải từ Supabase)
+  for (const e of customEvents) {
     const solar = nextSolarForLunar(e.lunarDay, e.lunarMonth, from)
     if (!solar) continue
     items.push({

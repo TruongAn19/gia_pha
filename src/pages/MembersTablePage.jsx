@@ -34,8 +34,8 @@ const STATUS = {
 const COL = {
   name: 'flex min-w-0 flex-1 items-center gap-3',
   gen: 'w-[88px] shrink-0',
-  father: 'hidden w-[176px] shrink-0 md:block',
-  giỗ: 'hidden w-[132px] shrink-0 lg:block',
+  father: 'hidden w-[176px] shrink-0 lg:block',
+  giỗ: 'hidden w-[132px] shrink-0 xl:block',
   status: 'w-[120px] shrink-0',
   kids: 'hidden w-[80px] shrink-0 text-center sm:block',
   act: 'flex w-[84px] shrink-0 justify-end gap-1',

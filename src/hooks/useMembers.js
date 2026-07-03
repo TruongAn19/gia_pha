@@ -26,7 +26,7 @@ export function useMembers() {
         const { data, error } = await supabase
           .from('members')
           .select(
-            'id,name,han_name,generation,death_anniversary,grave,details,photo_url,parent_id'
+            'id,name,han_name,generation,death_anniversary,grave,details,photo_url,parent_id,is_deceased,birth_year,death_year,gender'
           )
           .order('generation', { ascending: true })
           .order('name', { ascending: true })

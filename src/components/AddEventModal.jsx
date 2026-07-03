@@ -14,11 +14,20 @@ export default function AddEventModal({ open, onClose, onSubmit }) {
   }, [open])
   if (!open) return null
 
+  const [saving, setSaving] = useState(false)
   const set = (k) => (e) => setF((s) => ({ ...s, [k]: e.target.value }))
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault()
-    if (!f.title.trim()) return
-    addEvent(f)
+    if (!f.title.trim() || saving) return
+    setSaving(true)
+    try {
+      await addEvent(f)
+    } catch (err) {
+      alert('Lưu sự kiện thất bại: ' + (err?.message || err))
+      setSaving(false)
+      return
+    }
+    setSaving(false)
     onSubmit?.()
   }
 

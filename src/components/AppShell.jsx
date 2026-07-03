@@ -12,8 +12,24 @@ import AddEditModal from './AddEditModal'
 import LoginModal from './LoginModal'
 import Icon from './ui/Icon'
 import { useAuth } from '../hooks/useAuth'
-import { addMember, updateMember, allMembers, getChildrenInfo } from '../data/genealogy'
+import { useMembers } from '../hooks/useMembers'
+import { loadMembers, allMembers, getChildrenInfo } from '../data/genealogy'
 import { NAV_TITLE } from './nav'
+
+// Cột thật trong bảng members (Supabase) — chỉ ghi các field này.
+const MEMBER_COLUMNS = [
+  'name',
+  'han_name',
+  'generation',
+  'death_anniversary',
+  'grave',
+  'details',
+  'photo_url',
+  'is_deceased',
+  'birth_year',
+  'death_year',
+  'gender',
+]
 
 /**
  * Khung giao diện chung: Sidebar (desktop) / BottomTabBar (mobile) + nội dung.
@@ -21,8 +37,44 @@ import { NAV_TITLE } from './nav'
  */
 export default function AppShell() {
   const { isAdmin, signIn, signOut, adminUsername } = useAuth()
-  const [active, setActive] = useState('tree')
-  const [profileId, setProfileId] = useState(null)
+  const {
+    members: dbMembers,
+    loading: membersLoading,
+    error: membersError,
+    addMember: sbAddMember,
+    updateMember: sbUpdateMember,
+  } = useMembers()
+  const [active, setActive] = useState(() => {
+    try {
+      return localStorage.getItem('activeTab') || 'tree'
+    } catch {
+      return 'tree'
+    }
+  })
+  const [profileId, setProfileId] = useState(() => {
+    try {
+      return localStorage.getItem('profileId') || null
+    } catch {
+      return null
+    }
+  })
+
+  // Ghi nhớ vị trí điều hướng để F5 vẫn ở đúng trang / hồ sơ đang xem
+  useEffect(() => {
+    try {
+      localStorage.setItem('activeTab', active)
+    } catch {
+      /* ignore */
+    }
+  }, [active])
+  useEffect(() => {
+    try {
+      if (profileId) localStorage.setItem('profileId', profileId)
+      else localStorage.removeItem('profileId')
+    } catch {
+      /* ignore */
+    }
+  }, [profileId])
   const [treeFocus, setTreeFocus] = useState(null) // mở cây tại 1 người (từ "Xem trên cây")
   const [modal, setModal] = useState(null) // {mode:'add'|'edit', parent, member}
   const [loginOpen, setLoginOpen] = useState(false)
@@ -41,6 +93,17 @@ export default function AppShell() {
     })
   const [dataVersion, setDataVersion] = useState(0) // bump để làm mới UI sau khi sửa data
 
+  // Nạp dữ liệu từ Supabase vào store dùng chung (genealogy) mà mọi trang đang đọc.
+  // Map id -> id_temp, parent_id -> parent_id_temp cho khớp các hàm hiện có.
+  useEffect(() => {
+    if (membersLoading) return
+    if (membersError || !dbMembers.length) return // giữ dữ liệu members.json làm phương án dự phòng
+    loadMembers(dbMembers.map((m) => ({ ...m, id_temp: m.id, parent_id_temp: m.parent_id })))
+    // Bỏ hồ sơ đang mở nếu id cũ (numeric từ members.json) không còn khớp id Supabase
+    setProfileId((pid) => (pid && !dbMembers.some((m) => m.id === pid) ? null : pid))
+    setDataVersion((v) => v + 1)
+  }, [dbMembers, membersLoading, membersError])
+
   const go = (key) => {
     setProfileId(null)
     setActive(key)
@@ -54,14 +117,23 @@ export default function AppShell() {
   const openEdit = (member) => setModal({ mode: 'edit', parent: null, member })
   const closeModal = () => setModal(null)
 
-  const handleSubmit = (payload) => {
-    if (modal.mode === 'add') {
-      addMember(payload)
-    } else {
-      updateMember(modal.member.id_temp, payload)
+  const handleSubmit = async (payload) => {
+    // Chỉ gửi các cột có thật trong bảng members
+    const row = {}
+    for (const k of MEMBER_COLUMNS) if (payload[k] !== undefined) row[k] = payload[k]
+    try {
+      if (modal.mode === 'add') {
+        row.parent_id = payload.parent_id_temp ?? null
+        await sbAddMember(row)
+      } else {
+        await sbUpdateMember(modal.member.id_temp, row)
+      }
+    } catch (e) {
+      alert('Lưu thất bại: ' + (e?.message || e))
+      return
     }
     closeModal()
-    setDataVersion((v) => v + 1) // làm mới các trang
+    // store + dataVersion tự cập nhật qua effect [dbMembers] ở trên
   }
 
   // CHỈ admin mới có onAdd/onEdit -> component ẩn nút Thêm/Sửa khi thiếu handler

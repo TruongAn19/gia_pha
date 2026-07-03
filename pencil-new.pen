@@ -2282,10 +2282,10 @@
                           "fill": "$fg-primary",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
-                          "content": "Là con trưởng cụ Ngô Pháp Quyền. Cụ thọ 74 tuổi, mất năm Minh Mạng thứ 6.\nBà Chánh thất: Là người họ Vũ, hiệu là Từ Nhu, ở Dưỡng Phú.\nNgày giỗ: 02-06 (Âm lịch).\nCác con: 02 con trai\n1. Ngô Kham 2. Ngô Cơ\n04 con gái\n1. Lớn nhất: Ngô Thị Tùy cùng (em) thứ tư Ngô Thị Phó, lấy cụ Phạm Hào Hiệu, người trong Làng.\n2. Thứ hai: Ngô Thị Cảm, lấy cụ Tổng Ban, người họ Đào ở làng Ngô Xá, Tổng Xạ.\n3. Thứ ba: Ngô Thị Nguyên, lấy cụ Vệ Nhất, xã Nam Trì.\n4. Thứ tư: Ngô Thị Phó (cùng chị lớn nhất), lấy cụ Phạm Hào Hiệu, người trong Làng.",
-                          "lineHeight": 1.6,
-                          "fontFamily": "$font-body",
-                          "fontSize": 14,
+                          "content": "Là con trưởng cụ Ngô Pháp Quyền. Cụ thọ 74 tuổi, mất năm Minh Mạng thứ 6.\n\nBà Chánh thất: Là người họ Vũ, hiệu là Từ Nhu, ở Dưỡng Phú.\n\nNgày giỗ: 02-06 (Âm lịch).\n\nCác con:\n- 02 con trai: Ngô Kham, Ngô Cơ\n- 04 con gái: Ngô Thị Tùy, Ngô Thị Cảm, Ngô Thị Nguyên, Ngô Thị Phó\n\nChi tiết các con gái:\n1. Lớn nhất: Ngô Thị Tùy cùng (em) thứ tư Ngô Thị Phó, lấy cụ Phạm Hào Hiệu, người trong Làng.\n2. Thứ hai: Ngô Thị Cảm, lấy cụ Tổng Ban, người họ Đào ở làng Ngô Xá, Tổng Xạ.\n3. Thứ ba: Ngô Thị Nguyên, lấy cụ Vệ Nhất, xã Nam Trì.",
+                          "lineHeight": 1.8,
+                          "fontFamily": "Newsreader",
+                          "fontSize": 20,
                           "fontWeight": "normal"
                         }
                       ]
@@ -14659,10 +14659,10 @@
                   "fill": "$fg-primary",
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
-                  "content": "Là con trưởng cụ Ngô Pháp Quyền. Cụ thọ 74 tuổi, mất năm Minh Mạng thứ 6.\nBà Chánh thất: Là người họ Vũ, hiệu là Từ Nhu, ở Dưỡng Phú.\nNgày giỗ: 02-06 (Âm lịch).\nCác con: 02 con trai\n1. Ngô Kham 2. Ngô Cơ\n04 con gái\n1. Lớn nhất: Ngô Thị Tùy…\n2. Thứ hai: Ngô Thị Cảm…\n3. Thứ ba: Ngô Thị Nguyên…\n4. Thứ tư: Ngô Thị Phó…",
-                  "lineHeight": 1.6,
-                  "fontFamily": "$font-body",
-                  "fontSize": 14,
+                  "content": "Là con trưởng cụ Ngô Pháp Quyền. Cụ thọ 74 tuổi, mất năm Minh Mạng thứ 6.\n\nBà Chánh thất: Là người họ Vũ, hiệu là Từ Nhu, ở Dưỡng Phú.\n\nNgày giỗ: 02-06 (Âm lịch).\n\nCác con:\n- 02 con trai: Ngô Kham, Ngô Cơ\n- 04 con gái: Ngô Thị Tùy...\n\nChi tiết các con gái:\n1. Lớn nhất: Ngô Thị Tùy...\n2. Thứ hai: Ngô Thị Cảm...\n3. Thứ ba: Ngô Thị Nguyên...\n4. Thứ tư: Ngô Thị Phó...",
+                  "lineHeight": 1.8,
+                  "fontFamily": "Newsreader",
+                  "fontSize": 20,
                   "fontWeight": "normal"
                 }
               ]
@@ -24590,7 +24590,7 @@
     {
       "type": "frame",
       "id": "N0sc7",
-      "x": 16970,
+      "x": 16996,
       "y": 0,
       "name": "Gia Phả - Sự kiện & Giỗ",
       "clip": true,
@@ -29960,8 +29960,10 @@
       "name": "Mobile - Sự kiện & Giỗ",
       "clip": true,
       "width": 390,
+      "height": 844,
       "fill": "$surface-primary",
       "layout": "vertical",
+      "justifyContent": "space_between",
       "children": [
         {
           "id": "DMJ9H",
@@ -30261,6 +30263,1518 @@
                           "fontFamily": "$font-body",
                           "fontSize": 13,
                           "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "list_header_5MIYND",
+              "name": "List Header",
+              "width": "fill_container",
+              "padding": [
+                4,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lh_title_SPJ9DD",
+                  "name": "Title",
+                  "fill": "$fg-primary",
+                  "content": "Dịp giỗ & sự kiện khác",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "lh_count_EBL5JT",
+                  "name": "Count",
+                  "fill": "$fg-secondary",
+                  "content": "6 dịp sắp tới",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "event_list_76X3SH",
+              "name": "Event List",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ev_row1_TONBRZ",
+                  "name": "Row Tết Thanh Minh",
+                  "width": "fill_container",
+                  "fill": "$surface-card",
+                  "cornerRadius": 12,
+                  "stroke": "$border-subtle",
+                  "strokeWidth": 1,
+                  "gap": 12,
+                  "padding": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ev_badge1_DELLZA",
+                      "name": "Badge",
+                      "width": 42,
+                      "height": 42,
+                      "fill": "$surface-muted",
+                      "cornerRadius": 8,
+                      "layout": "vertical",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "eb_t1_0GIDUG",
+                          "name": "Day",
+                          "fill": "$fg-primary",
+                          "content": "04",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "eb_t2_K1Q8JA",
+                          "name": "Month",
+                          "fill": "$fg-secondary",
+                          "content": "Th04",
+                          "fontFamily": "$font-body",
+                          "fontSize": 9,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ev_info1_8O8UCT",
+                      "name": "Info",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ei_t1_ALYHB9",
+                          "name": "Title",
+                          "fill": "$fg-primary",
+                          "content": "Tết Thanh Minh",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ei_t2_56TYD1",
+                          "name": "Meta",
+                          "fill": "$fg-secondary",
+                          "content": "17/2 Âm lịch · Tiết Thanh Minh",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "icon",
+                      "id": "ev_bell1_GO0JVN",
+                      "name": "Bell",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "bell",
+                      "library": "lucide",
+                      "fill": "$fg-secondary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ev_row2_EABP1O",
+                  "name": "Row Giỗ Tổ",
+                  "width": "fill_container",
+                  "fill": "$surface-card",
+                  "cornerRadius": 12,
+                  "stroke": "$border-subtle",
+                  "strokeWidth": 1,
+                  "gap": 12,
+                  "padding": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ev_badge2_9FS7QF",
+                      "name": "Badge",
+                      "width": 42,
+                      "height": 42,
+                      "fill": "$surface-muted",
+                      "cornerRadius": 8,
+                      "layout": "vertical",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "eb2_t1_D65IS2",
+                          "name": "Day",
+                          "fill": "$fg-primary",
+                          "content": "19",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "eb2_t2_UANM77",
+                          "name": "Month",
+                          "fill": "$fg-secondary",
+                          "content": "Th01",
+                          "fontFamily": "$font-body",
+                          "fontSize": 9,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ev_info2_2UICYR",
+                      "name": "Info",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ei2_t1_E7B4XC",
+                          "name": "Title",
+                          "fill": "$fg-primary",
+                          "content": "Giỗ Tổ Họ Ngô (19 tháng Giêng)",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ei2_t2_UAUIUR",
+                          "name": "Meta",
+                          "fill": "$fg-secondary",
+                          "content": "19/1 Âm lịch · Thủy tổ dòng họ",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "icon",
+                      "id": "ev_bell2_4MVN8W",
+                      "name": "Bell",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "bell",
+                      "library": "lucide",
+                      "fill": "$fg-secondary"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "event_tab_bar_area_QCLRGN",
+          "name": "Tab Bar Area",
+          "width": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            14,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "event_tab_bar_2TED4O",
+              "name": "Tab Bar",
+              "width": "fill_container",
+              "height": 62,
+              "fill": "#FFFFFFF2",
+              "cornerRadius": 31,
+              "stroke": "$border-subtle",
+              "strokeWidth": 1,
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#1A16121F",
+                "offset": {
+                  "x": 0,
+                  "y": 8
+                },
+                "blur": 24
+              },
+              "padding": [
+                6,
+                8
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "et_tab1_38CRMG",
+                  "name": "Tổng quan",
+                  "width": "fill_container",
+                  "fill": "#00000000",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 3,
+                  "padding": [
+                    7,
+                    0
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "eti1_JXC7O0",
+                      "name": "I",
+                      "width": 21,
+                      "height": 21,
+                      "icon": "house",
+                      "library": "lucide",
+                      "fill": "$fg-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ett1_ZUEXWY",
+                      "name": "T",
+                      "fill": "$fg-secondary",
+                      "content": "Tổng quan",
+                      "fontFamily": "$font-body",
+                      "fontSize": 10,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "et_tab2_QAZ3KR",
+                  "name": "Phả hệ",
+                  "width": "fill_container",
+                  "fill": "#00000000",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 3,
+                  "padding": [
+                    7,
+                    0
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "eti2_G30H7B",
+                      "name": "I",
+                      "width": 21,
+                      "height": 21,
+                      "icon": "network",
+                      "library": "lucide",
+                      "fill": "$fg-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ett2_RSSZBC",
+                      "name": "T",
+                      "fill": "$fg-secondary",
+                      "content": "Phả hệ",
+                      "fontFamily": "$font-body",
+                      "fontSize": 10,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "et_tab3_YAL6HH",
+                  "name": "Thành viên",
+                  "width": "fill_container",
+                  "fill": "#00000000",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 3,
+                  "padding": [
+                    7,
+                    0
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "eti3_6BRB53",
+                      "name": "I",
+                      "width": 21,
+                      "height": 21,
+                      "icon": "users",
+                      "library": "lucide",
+                      "fill": "$fg-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ett3_KG2HLE",
+                      "name": "T",
+                      "fill": "$fg-secondary",
+                      "content": "Thành viên",
+                      "fontFamily": "$font-body",
+                      "fontSize": 10,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "et_tab4_5GJ800",
+                  "name": "Sự kiện",
+                  "width": "fill_container",
+                  "fill": "#EFE7D3",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 3,
+                  "padding": [
+                    7,
+                    0
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "eti4_45EWQH",
+                      "name": "I",
+                      "width": 21,
+                      "height": 21,
+                      "icon": "calendar-heart",
+                      "library": "lucide",
+                      "fill": "$accent"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ett4_O39807",
+                      "name": "T",
+                      "fill": "$accent",
+                      "content": "Sự kiện",
+                      "fontFamily": "$font-body",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "mKbVt2",
+      "x": 23572,
+      "y": 0,
+      "name": "Mobile - Bài viết & Tư liệu",
+      "clip": true,
+      "width": 435,
+      "height": 844,
+      "fill": "$surface-card",
+      "layout": "vertical",
+      "justifyContent": "space_between",
+      "children": [
+        {
+          "id": "sb_art_VL6U4O",
+          "type": "ref",
+          "ref": "lUnpd",
+          "name": "Status Bar"
+        },
+        {
+          "type": "frame",
+          "id": "wrap_art_9VLASE",
+          "name": "Wrapper",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            6,
+            16,
+            0,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "ab_art_RCQEHO",
+              "name": "App Bar",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ab_title_grp_K5O04X",
+                  "name": "Titles",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ab_t1_FHXJZ1",
+                      "name": "Title",
+                      "fill": "$fg-primary",
+                      "content": "Bài viết & Tư liệu",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 24,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ab_t2_XYLV4S",
+                      "name": "Sub",
+                      "fill": "$fg-secondary",
+                      "content": "Tư liệu, hồi ký & lịch sử dòng họ",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ab_add_btn_1TADJR",
+                  "name": "Add",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$accent",
+                  "cornerRadius": 20,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "ab_add_ico_3PJK6N",
+                      "name": "I",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "plus",
+                      "library": "lucide",
+                      "fill": "$fg-inverse"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "search_grp_72HYFQ",
+              "name": "Search Box",
+              "width": "fill_container",
+              "fill": "$surface-muted",
+              "cornerRadius": 20,
+              "gap": 8,
+              "padding": [
+                10,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "s_ico_JKQQ9P",
+                  "name": "I",
+                  "width": 15,
+                  "height": 15,
+                  "icon": "search",
+                  "library": "lucide",
+                  "fill": "$fg-secondary"
+                },
+                {
+                  "type": "text",
+                  "id": "s_txt_TBMPJ0",
+                  "name": "P",
+                  "fill": "$fg-secondary",
+                  "content": "Tìm bài viết...",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "tabs_grp_3Z1GJJ",
+              "name": "Tabs",
+              "width": "fill_container",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "t_tab1_05P7OY",
+                  "name": "Tất cả",
+                  "fill": "$accent",
+                  "cornerRadius": 14,
+                  "padding": [
+                    6,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "t_txt1_VJSS87",
+                      "name": "T",
+                      "fill": "$fg-inverse",
+                      "content": "Tất cả",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "t_tab2_1L8M1U",
+                  "name": "Tư liệu",
+                  "fill": "$surface-muted",
+                  "cornerRadius": 14,
+                  "padding": [
+                    6,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "t_txt2_54CV8Q",
+                      "name": "T",
+                      "fill": "$fg-secondary",
+                      "content": "Tư liệu",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "t_tab3_E5W6DV",
+                  "name": "Hồi ký",
+                  "fill": "$surface-muted",
+                  "cornerRadius": 14,
+                  "padding": [
+                    6,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "t_txt3_CFM5PM",
+                      "name": "T",
+                      "fill": "$fg-secondary",
+                      "content": "Hồi ký",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "feat_art_TUNVG3",
+              "name": "Featured Article",
+              "width": "fill_container",
+              "fill": "$surface-card",
+              "cornerRadius": 12,
+              "stroke": "$border-subtle",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "fa_cover_E95UOP",
+                  "name": "Cover",
+                  "width": "fill_container",
+                  "height": 130,
+                  "fill": "$surface-inverse",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "fa_mon_BNKLOF",
+                      "name": "T",
+                      "opacity": 0.3,
+                      "fill": "$fg-inverse",
+                      "content": "吳",
+                      "fontFamily": "Noto Serif SC",
+                      "fontSize": 36,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "fa_body_ND6RAV",
+                  "name": "Body",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "fa_tag_U8C4A1",
+                      "name": "Tag",
+                      "fill": "$accent",
+                      "content": "BÀI GHIM · LỊCH SỬ",
+                      "fontFamily": "$font-body",
+                      "fontSize": 9,
+                      "fontWeight": "700",
+                      "letterSpacing": 1
+                    },
+                    {
+                      "type": "text",
+                      "id": "fa_title_W0AS9I",
+                      "name": "Title",
+                      "fill": "$fg-primary",
+                      "content": "Hành trình hơn 300 năm lập nghiệp",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "fa_meta_G3KZNC",
+                      "name": "Meta",
+                      "fill": "$fg-secondary",
+                      "content": "Ban biên tập dòng họ · 02/07/2026",
+                      "fontFamily": "$font-body",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "art_tab_bar_area_U0U5Y0",
+          "name": "Tab Bar Area",
+          "width": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            14,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "art_tab_bar_2QL7G9",
+              "name": "Tab Bar",
+              "width": "fill_container",
+              "height": 62,
+              "fill": "#FFFFFFF2",
+              "cornerRadius": 31,
+              "stroke": "$border-subtle",
+              "strokeWidth": 1,
+              "padding": [
+                6,
+                8
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "at_tab1_VK4PY0",
+                  "name": "Tổng quan",
+                  "width": "fill_container",
+                  "fill": "#EFE7D3",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 3,
+                  "padding": [
+                    7,
+                    0
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "ati1_FQWDKP",
+                      "name": "I",
+                      "width": 21,
+                      "height": 21,
+                      "icon": "house",
+                      "library": "lucide",
+                      "fill": "$accent"
+                    },
+                    {
+                      "type": "text",
+                      "id": "att1_0KJ1BE",
+                      "name": "T",
+                      "fill": "$accent",
+                      "content": "Tổng quan",
+                      "fontFamily": "$font-body",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "at_tab2_4ZSXLZ",
+                  "name": "Phả hệ",
+                  "width": "fill_container",
+                  "fill": "#00000000",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 3,
+                  "padding": [
+                    7,
+                    0
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "ati2_M6K872",
+                      "name": "I",
+                      "width": 21,
+                      "height": 21,
+                      "icon": "network",
+                      "library": "lucide",
+                      "fill": "$fg-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "att2_J8PO01",
+                      "name": "T",
+                      "fill": "$fg-secondary",
+                      "content": "Phả hệ",
+                      "fontFamily": "$font-body",
+                      "fontSize": 10,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "at_tab3_99A7FP",
+                  "name": "Thành viên",
+                  "width": "fill_container",
+                  "fill": "#00000000",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 3,
+                  "padding": [
+                    7,
+                    0
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "ati3_8S6GYN",
+                      "name": "I",
+                      "width": 21,
+                      "height": 21,
+                      "icon": "users",
+                      "library": "lucide",
+                      "fill": "$fg-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "att3_YSG1N4",
+                      "name": "T",
+                      "fill": "$fg-secondary",
+                      "content": "Thành viên",
+                      "fontFamily": "$font-body",
+                      "fontSize": 10,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "at_tab4_EABWCG",
+                  "name": "Sự kiện",
+                  "width": "fill_container",
+                  "fill": "#00000000",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 3,
+                  "padding": [
+                    7,
+                    0
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "ati4_GU8XY6",
+                      "name": "I",
+                      "width": 21,
+                      "height": 21,
+                      "icon": "calendar-heart",
+                      "library": "lucide",
+                      "fill": "$fg-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "att4_7JYMRK",
+                      "name": "T",
+                      "fill": "$fg-secondary",
+                      "content": "Sự kiện",
+                      "fontFamily": "$font-body",
+                      "fontSize": 10,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "mKbVt3",
+      "x": 24104,
+      "y": 0,
+      "name": "Mobile - Chi tiết bài viết",
+      "clip": true,
+      "width": 424,
+      "height": 844,
+      "fill": "$surface-card",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "sb_dt_RJ4CG8",
+          "type": "ref",
+          "ref": "lUnpd",
+          "name": "Status Bar"
+        },
+        {
+          "type": "frame",
+          "id": "ab_dt_RANELW",
+          "name": "App Bar",
+          "width": "fill_container",
+          "stroke": "$border-subtle",
+          "strokeWidth": {
+            "bottom": 1
+          },
+          "padding": [
+            8,
+            16,
+            10,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "abd_back_BP592D",
+              "name": "Back",
+              "width": 40,
+              "height": 40,
+              "fill": "$surface-muted",
+              "cornerRadius": 20,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "abd_back_ico_TA6NS6",
+                  "name": "I",
+                  "width": 19,
+                  "height": 19,
+                  "icon": "arrow-left",
+                  "library": "lucide",
+                  "fill": "$fg-primary"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "abd_titles_O7ON7A",
+              "name": "Titles",
+              "layout": "vertical",
+              "gap": 1,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "abd_t1_05LHA0",
+                  "name": "T",
+                  "fill": "$fg-primary",
+                  "content": "Chi tiết tư liệu",
+                  "fontFamily": "$font-body",
+                  "fontSize": 15,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "abd_share_Q27ATA",
+              "name": "Share",
+              "width": 40,
+              "height": 40,
+              "fill": "$surface-muted",
+              "cornerRadius": 20,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "abd_share_ico_YBRTTO",
+                  "name": "I",
+                  "width": 17,
+                  "height": 17,
+                  "icon": "share-2",
+                  "library": "lucide",
+                  "fill": "$fg-primary"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "dt_scroll_HJ9YSL",
+          "name": "Scroll Body",
+          "clip": true,
+          "width": 416,
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": [
+            18,
+            20
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "dt_tag_CQQ7HZ",
+              "name": "Tag",
+              "fill": "$accent",
+              "content": "TƯ LIỆU DÒNG HỌ",
+              "fontFamily": "$font-body",
+              "fontSize": 11,
+              "fontWeight": "600",
+              "letterSpacing": 1.5
+            },
+            {
+              "type": "text",
+              "id": "dt_title_QNAKJQ",
+              "name": "Title",
+              "fill": "$fg-primary",
+              "content": "Hành trình hơn 300 năm khai cơ lập nghiệp",
+              "fontFamily": "$font-heading",
+              "fontSize": 22,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "dt_author_XA0GZ8",
+              "name": "Author",
+              "fill": "$fg-secondary",
+              "content": "Bởi Ban biên tập dòng họ · 02/07/2026",
+              "fontFamily": "$font-body",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "dt_cover_8DGKXP",
+              "name": "Cover Image",
+              "width": "fill_container",
+              "height": 160,
+              "fill": "$surface-muted",
+              "cornerRadius": 8,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "dt_cov_txt_WHWIBG",
+                  "name": "T",
+                  "fill": "$fg-secondary",
+                  "content": "[Ảnh Tư Liệu]",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "dt_p1_18RIED",
+              "name": "P",
+              "fill": "$fg-primary",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Theo tài liệu và văn tế tổ tiên ghi lại, họ Ngô thôn Phú Cốc bắt đầu từ cụ Thủy tổ Ngô Phúc Khang đến định cư khai phá vùng đất này vào khoảng thế kỷ 17. Trải qua hơn 300 năm, dòng họ luôn giữ vững truyền thống văn hóa hiếu học, chăm chỉ sản xuất và yêu nước thương nòi...",
+              "lineHeight": 1.8,
+              "fontFamily": "Newsreader",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "wsRAt",
+      "x": 24753,
+      "y": 0,
+      "name": "Gia Phả - Modal Sửa bài viết",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "children": [
+        {
+          "id": "ShNWe",
+          "type": "ref",
+          "ref": "Y3sP8"
+        },
+        {
+          "type": "frame",
+          "id": "hXzBb",
+          "name": "Main",
+          "width": "fill_container",
+          "height": "fill_container",
+          "fill": "$surface-primary"
+        },
+        {
+          "type": "frame",
+          "id": "r6FF9",
+          "layoutPosition": "absolute",
+          "x": 0,
+          "y": 0,
+          "name": "Scrim",
+          "width": 1440,
+          "height": 1024,
+          "fill": "#1A18168F",
+          "layout": "vertical",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "axKpo",
+              "name": "Modal Box",
+              "clip": true,
+              "width": 896,
+              "fill": "$surface-card",
+              "cornerRadius": 16,
+              "stroke": "$border-subtle",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "K2mges",
+                  "name": "Header",
+                  "width": "fill_container",
+                  "stroke": "$border-subtle",
+                  "strokeWidth": {
+                    "bottom": 1
+                  },
+                  "padding": [
+                    12,
+                    20
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "BFI27",
+                      "name": "Left",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "yF06N",
+                          "name": "Title",
+                          "fill": "$fg-primary",
+                          "content": "Sửa bài viết",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 18,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "T9KbEx",
+                          "name": "Sub",
+                          "fill": "$fg-secondary",
+                          "content": "Ban biên tập · nội dung hiển thị cho mọi thành viên",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "KRAeb",
+                      "name": "Right",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "u7htbM",
+                          "name": "Btn Draft",
+                          "cornerRadius": 8,
+                          "stroke": "$border-subtle",
+                          "strokeWidth": 1,
+                          "padding": [
+                            6,
+                            12
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "IL7dY",
+                              "fill": "$fg-secondary",
+                              "content": "Lưu nháp",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "ZVhPL",
+                          "name": "Btn Save",
+                          "fill": "$accent",
+                          "cornerRadius": 8,
+                          "padding": [
+                            6,
+                            16
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "qDdeM",
+                              "fill": "$fg-inverse",
+                              "content": "Cập nhật",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "icon",
+                          "id": "meMqW",
+                          "name": "Close",
+                          "width": 18,
+                          "height": 18,
+                          "icon": "x",
+                          "library": "lucide",
+                          "fill": "$fg-secondary"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "JsMEk",
+                  "name": "Body",
+                  "width": "fill_container",
+                  "gap": 20,
+                  "padding": 20,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ZstPA",
+                      "name": "Left Col",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "paYcx",
+                          "name": "Cover",
+                          "width": "fill_container",
+                          "height": 128,
+                          "cornerRadius": 12,
+                          "stroke": "$border-subtle",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "gap": 8,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "J6Vjl",
+                              "width": 26,
+                              "height": 26,
+                              "icon": "images",
+                              "library": "lucide",
+                              "fill": "$fg-secondary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "iiFJ1",
+                              "fill": "$fg-primary",
+                              "content": "Tải ảnh bìa",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "y7Yh9",
+                              "fill": "$fg-secondary",
+                              "content": "Kéo thả ảnh vào đây hoặc bấm để chọn · JPG, PNG",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Thj4k",
+                          "width": "fill_container",
+                          "fill": "$surface-primary",
+                          "cornerRadius": 8,
+                          "stroke": "$border-subtle",
+                          "strokeWidth": 1,
+                          "padding": [
+                            10,
+                            12
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "z3znV",
+                              "fill": "$fg-primary",
+                              "content": "Hành trình hơn 300 năm khai cơ lập nghiệp",
+                              "fontFamily": "$font-heading",
+                              "fontSize": 20,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "IPdzI",
+                          "width": "fill_container",
+                          "fill": "$surface-primary",
+                          "cornerRadius": 8,
+                          "stroke": "$border-subtle",
+                          "strokeWidth": 1,
+                          "padding": 12,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "XyE7B",
+                              "fill": "$fg-secondary",
+                              "content": "Từ một cụ Thủy tổ đến vùng đất Phú Cốc khai hoang...",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "zeDkb",
+                          "width": "fill_container",
+                          "height": 200,
+                          "fill": "$surface-primary",
+                          "cornerRadius": 8,
+                          "stroke": "$border-subtle",
+                          "strokeWidth": 1,
+                          "padding": 12,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "l2fxYK",
+                              "fill": "$fg-primary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Từ một cụ Thủy tổ đến vùng đất Phú Cốc khai hoang, dòng họ Ngô đã trải qua hơn ba thế kỷ dựng xây và tiếp nối.\n\nKể từ ngày cụ Ngô Phúc Khang, Thủy tổ của họ Ngô Phú Cốc, đến vùng đất này khoảng đời vua Lê Hy Tông...",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "D5Rbdh",
+                      "name": "Right Col",
+                      "width": 260,
+                      "layout": "vertical",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "C8VNSz",
+                          "width": "fill_container",
+                          "cornerRadius": 12,
+                          "stroke": "$border-subtle",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "gap": 8,
+                          "padding": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "AfdtH",
+                              "fill": "$fg-secondary",
+                              "content": "CHUYÊN MỤC",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "600",
+                              "letterSpacing": 1.2
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Sa95Z",
+                              "width": "fill_container",
+                              "fill": "$surface-primary",
+                              "cornerRadius": 8,
+                              "stroke": "$border-subtle",
+                              "strokeWidth": 1,
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "J17ngp",
+                                  "fill": "$fg-primary",
+                                  "content": "Lịch sử",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "icon",
+                                  "id": "yrCxF",
+                                  "width": 14,
+                                  "height": 14,
+                                  "icon": "chevron-down",
+                                  "library": "lucide",
+                                  "fill": "$fg-secondary"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "F2yaE",
+                          "width": "fill_container",
+                          "cornerRadius": 12,
+                          "stroke": "$border-subtle",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "gap": 8,
+                          "padding": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "g8CGZ",
+                              "fill": "$fg-secondary",
+                              "content": "TÁC GIẢ",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "600",
+                              "letterSpacing": 1.2
+                            },
+                            {
+                              "type": "frame",
+                              "id": "GuY6b",
+                              "width": "fill_container",
+                              "fill": "$surface-primary",
+                              "cornerRadius": 8,
+                              "stroke": "$border-subtle",
+                              "strokeWidth": 1,
+                              "padding": [
+                                8,
+                                12
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "hhJBI",
+                                  "fill": "$fg-primary",
+                                  "content": "Ban biên tập",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Z7cgJ",
+                          "width": "fill_container",
+                          "fill": "$surface-muted",
+                          "cornerRadius": 12,
+                          "padding": 12,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "XdUe1",
+                              "fill": "$fg-secondary",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Bấm Đăng bài để công khai cho mọi thành viên, hoặc Lưu nháp để cất giữ riêng.",
+                              "fontFamily": "Inter",
+                              "fontSize": 12,
+                              "fontWeight": "normal"
+                            }
+                          ]
                         }
                       ]
                     }

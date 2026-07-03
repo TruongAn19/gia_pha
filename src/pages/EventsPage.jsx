@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import members from '../../members.json'
 import { loadMembers } from '../data/genealogy'
-import { buildAgenda, solarToLunar } from '../data/events'
+import { buildAgenda, fetchEvents, solarToLunar } from '../data/events'
 import { fmtSolar, weekdayName } from '../data/lunar'
 import Icon from '../components/ui/Icon'
 import Pagination from '../components/ui/Pagination'
@@ -33,7 +33,12 @@ export default function EventsPage({ onOpenProfile, canEdit = false, dataVersion
   const [selectedId, setSelectedId] = useState(null)
   const bannerRef = useRef(null)
 
-  const agenda = useMemo(() => buildAgenda(today), [today, bump, dataVersion])
+  const [events, setEvents] = useState([])
+  useEffect(() => {
+    fetchEvents().then(setEvents)
+  }, [bump, dataVersion])
+
+  const agenda = useMemo(() => buildAgenda(today, events), [today, events, bump, dataVersion])
   const nearest = agenda[0] || null
   // Banner hiển thị dịp đang chọn (mặc định = gần nhất)
   const featured = agenda.find((a) => a.id === selectedId) || nearest

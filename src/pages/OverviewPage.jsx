@@ -56,7 +56,7 @@ export default function OverviewPage({ dataVersion = 0 }) {
               </span>
             </div>
             <h2 className="font-heading text-3xl leading-tight md:text-4xl">Gia Phả Dòng Họ Ngô</h2>
-            <p className="max-w-3xl text-[15px] leading-relaxed text-[#D8D3C7]">
+            <p className="max-w-3xl text-[20px] leading-relaxed text-[#D8D3C7]">
               Khởi tổ: Cụ Ngô Phúc Khang — đến vùng đất này khoảng đời vua Lê Hy Tông (1681–1705),
               khai cơ lập nghiệp. Trải hơn 300 năm, {genCount} đời, con cháu nay đã có tới mấy trăm hộ gia đình.
             </p>
@@ -88,7 +88,7 @@ export default function OverviewPage({ dataVersion = 0 }) {
               Nối tiếp ông, cha biên gia phả
             </div>
             <div className="mt-3 h-0.5 w-16 bg-accent-soft" />
-            <div className="mt-4 flex flex-col gap-4 font-serif text-[15px] leading-[27px] text-fg">
+            <div className="mt-4 flex flex-col gap-4 font-serif text-[20px] leading-[36px] text-fg">
               {PREFACE.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
@@ -112,7 +112,7 @@ export default function OverviewPage({ dataVersion = 0 }) {
             </div>
             <div className="mt-4 flex flex-col items-center gap-4 rounded-card border border-hairline bg-surface px-6 py-8 text-center md:px-12">
               <Icon name="flame" size={22} className="text-accent-soft" />
-              <p className="font-serif text-[17px] italic leading-[33px] text-fg">{VAN_TE}</p>
+              <p className="font-serif text-[20px] italic leading-[38px] text-fg">{VAN_TE}</p>
               <p className="text-xs italic text-fg-2">(Bài văn này cụ Tú tài làng Thổ Hoàng tên là Tiến soạn)</p>
             </div>
           </section>

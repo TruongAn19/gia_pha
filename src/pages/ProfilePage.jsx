@@ -143,7 +143,13 @@ export default function ProfilePage({ memberId, onBack, onOpenProfile, onEdit, o
             {/* Tiểu sử */}
             {m.details && (
               <SectionCard title="Tiểu sử" icon="doc">
-                <p className="whitespace-pre-line leading-relaxed text-fg">{m.details}</p>
+                <div className="font-serif text-[20px] leading-[1.8] text-fg">
+                  {m.details.split('\n').map((line, i) => (
+                    <p key={i} className="mb-3 last:mb-0">
+                      {line}
+                    </p>
+                  ))}
+                </div>
               </SectionCard>
             )}
 

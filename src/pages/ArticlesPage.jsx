@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { allArticles, getArticle, getPinned, CATEGORIES, readMinutes, fmtDate } from '../data/articles'
+import { fetchArticles, CATEGORIES, readMinutes, fmtDate } from '../data/articles'
 import { removeDiacritics } from '../data/genealogy'
 import Icon from '../components/ui/Icon'
 import Pagination from '../components/ui/Pagination'
@@ -8,7 +8,8 @@ import PostArticleModal from '../components/PostArticleModal'
 const PAGE_SIZE = 6
 const TABS = ['Tất cả', ...CATEGORIES]
 
-function Cover({ className = '', size = 22 }) {
+function Cover({ src, className = '', size = 22 }) {
+  if (src) return <img src={src} alt="" className={`w-full object-cover ${className}`} />
   return (
     <div className={`flex items-center justify-center bg-gradient-to-br from-inverse to-accent/70 text-fg-inv ${className}`}>
       <span className="font-han opacity-80" style={{ fontSize: size }}>吳</span>
@@ -17,44 +18,97 @@ function Cover({ className = '', size = 22 }) {
 }
 
 export default function ArticlesPage({ canEdit = false, dataVersion = 0 }) {
-  const [view, setView] = useState({ name: 'list' })
+  const [view, setView] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('articleView')) || { name: 'list' }
+    } catch {
+      return { name: 'list' }
+    }
+  })
   const [postOpen, setPostOpen] = useState(false)
+  const [editId, setEditId] = useState(null)
   const [bump, setBump] = useState(0)
+  const [articles, setArticles] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  // Ghi nhớ đang mở danh sách hay 1 bài chi tiết -> F5 vẫn ở đúng chỗ
+  useEffect(() => {
+    try {
+      localStorage.setItem('articleView', JSON.stringify(view))
+    } catch {
+      /* ignore */
+    }
+  }, [view])
+
+  useEffect(() => {
+    setLoading(true)
+    fetchArticles().then((data) => {
+      setArticles(data)
+      // Nếu bài đang mở không còn tồn tại -> quay về danh sách
+      setView((v) => (v.name === 'detail' && !data.some((a) => a.id === v.id) ? { name: 'list' } : v))
+      setLoading(false)
+    })
+  }, [bump, dataVersion])
+
+  if (loading) {
+    return <div className="flex h-full items-center justify-center text-sm text-fg-2">Đang tải bài viết...</div>
+  }
+
+  const articleToEdit = editId ? articles.find(a => a.id === editId) : null
 
   if (view.name === 'detail') {
     return (
       <>
-        <ArticleDetail id={view.id} onBack={() => setView({ name: 'list' })} onOpen={(id) => setView({ name: 'detail', id })} canEdit={canEdit} v={bump} />
-        <PostArticleModal open={postOpen} onClose={() => setPostOpen(false)} onSaved={() => { setPostOpen(false); setBump((b) => b + 1) }} />
+        <ArticleDetail 
+          id={view.id} 
+          articles={articles}
+          onBack={() => setView({ name: 'list' })} 
+          onOpen={(id) => setView({ name: 'detail', id })} 
+          canEdit={canEdit} 
+          v={bump} 
+          onEdit={() => { setEditId(view.id); setPostOpen(true) }}
+        />
+        <PostArticleModal 
+          open={postOpen} 
+          onClose={() => { setPostOpen(false); setEditId(null) }} 
+          onSaved={() => { setPostOpen(false); setEditId(null); setBump((b) => b + 1) }} 
+          article={articleToEdit}
+        />
       </>
     )
   }
   return (
     <>
       <ArticleList
+        articles={articles}
         onOpen={(id) => setView({ name: 'detail', id })}
-        onPost={() => setPostOpen(true)}
+        onPost={() => { setEditId(null); setPostOpen(true) }}
         canEdit={canEdit}
         v={bump + dataVersion}
       />
-      <PostArticleModal open={postOpen} onClose={() => setPostOpen(false)} onSaved={() => { setPostOpen(false); setBump((b) => b + 1) }} />
+      <PostArticleModal 
+        open={postOpen} 
+        onClose={() => { setPostOpen(false); setEditId(null) }} 
+        onSaved={() => { setPostOpen(false); setEditId(null); setBump((b) => b + 1) }} 
+        article={articleToEdit}
+      />
     </>
   )
 }
 
-function ArticleList({ onOpen, onPost, canEdit, v }) {
+function ArticleList({ articles, onOpen, onPost, canEdit, v }) {
   const [q, setQ] = useState('')
   const [cat, setCat] = useState('Tất cả')
   const [page, setPage] = useState(1)
 
-  const pinned = useMemo(() => getPinned(), [v])
+  const pinned = useMemo(() => articles.find((a) => a.pinned), [articles, v])
   const filtered = useMemo(() => {
     const nq = removeDiacritics(q.trim().toLowerCase())
-    let list = allArticles()
+    let list = articles.filter((a) => a.status !== 'draft')
     if (cat !== 'Tất cả') list = list.filter((a) => a.category === cat)
     if (nq) list = list.filter((a) => removeDiacritics(`${a.title} ${a.excerpt}`.toLowerCase()).includes(nq))
     return list
-  }, [q, cat, v])
+  }, [q, cat, articles, v])
 
   // Bài ghim chỉ hiện ở "Tất cả" + không tìm kiếm; khi đó loại nó khỏi lưới
   const showPinned = pinned && cat === 'Tất cả' && !q.trim()
@@ -110,9 +164,9 @@ function ArticleList({ onOpen, onPost, canEdit, v }) {
         {showPinned && (
           <button
             onClick={() => onOpen(pinned.id)}
-            className="group mb-5 grid w-full overflow-hidden rounded-card border border-hairline bg-card text-left md:grid-cols-[300px_1fr]"
+            className="group mb-5 grid w-full overflow-hidden rounded-card border border-hairline bg-card text-left lg:grid-cols-[300px_1fr]"
           >
-            <Cover className="h-40 md:h-full" size={48} />
+            <Cover src={pinned.cover} className="h-40 lg:h-full" size={48} />
             <div className="p-5">
               <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-accent">
                 <Icon name="tag" size={13} /> Bài ghim · {pinned.category}
@@ -132,14 +186,14 @@ function ArticleList({ onOpen, onPost, canEdit, v }) {
             Không tìm thấy bài viết phù hợp.
           </div>
         ) : (
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {pageRows.map((a) => (
               <button
                 key={a.id}
                 onClick={() => onOpen(a.id)}
                 className="group flex flex-col overflow-hidden rounded-card border border-hairline bg-card text-left"
               >
-                <Cover className="h-36" size={40} />
+                <Cover src={a.cover} className="h-36" size={40} />
                 <div className="flex flex-1 flex-col p-4">
                   <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-accent">
                     <Icon name="tag" size={12} /> {a.category}
@@ -163,9 +217,9 @@ function ArticleList({ onOpen, onPost, canEdit, v }) {
   )
 }
 
-function ArticleDetail({ id, onBack, onOpen, canEdit, v }) {
-  const a = useMemo(() => getArticle(id), [id, v])
-  const others = useMemo(() => allArticles().filter((x) => x.id !== id).slice(0, 2), [id, v])
+function ArticleDetail({ id, articles, onBack, onOpen, canEdit, v, onEdit }) {
+  const a = useMemo(() => articles.find((x) => x.id === id), [id, articles, v])
+  const others = useMemo(() => articles.filter((x) => x.id !== id && x.status !== 'draft').slice(0, 2), [id, articles, v])
   if (!a) return <div className="p-10 text-center text-fg-2">Không tìm thấy bài viết.</div>
 
   const share = async () => {
@@ -195,14 +249,14 @@ function ArticleDetail({ id, onBack, onOpen, canEdit, v }) {
               <Icon name="share" size={14} /> Chia sẻ
             </button>
             {canEdit && (
-              <button className="flex items-center gap-1.5 rounded-btn border border-hairline px-3 py-1.5 hover:bg-muted">
+              <button onClick={onEdit} className="flex items-center gap-1.5 rounded-btn border border-hairline px-3 py-1.5 hover:bg-muted">
                 <Icon name="edit" size={14} /> Sửa
               </button>
             )}
           </div>
         </div>
 
-        <Cover className="mt-4 h-52 rounded-card md:h-64" size={64} />
+        <Cover src={a.cover} className="mt-4 h-64 rounded-card md:h-[400px]" size={64} />
 
         <span className="mt-5 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-accent">
           <Icon name="tag" size={13} /> {a.category}
@@ -246,7 +300,7 @@ function ArticleDetail({ id, onBack, onOpen, canEdit, v }) {
             <div className="mt-3 grid gap-4 sm:grid-cols-2">
               {others.map((o) => (
                 <button key={o.id} onClick={() => onOpen(o.id)} className="group flex flex-col overflow-hidden rounded-card border border-hairline bg-card text-left">
-                  <Cover className="h-28" size={32} />
+                  <Cover src={o.cover} className="h-28" size={32} />
                   <div className="p-4">
                     <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-accent">{o.category}</span>
                     <h4 className="mt-1 font-heading text-base text-fg group-hover:text-accent">{o.title}</h4>

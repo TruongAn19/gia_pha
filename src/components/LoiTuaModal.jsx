@@ -39,8 +39,8 @@ export default function LoiTuaModal({ open, onClose, paragraphs = [] }) {
           </button>
         </div>
 
-        <div className="gp-scroll flex-1 overflow-y-auto px-6 py-6">
-          <div className="mx-auto flex max-w-prose flex-col gap-4 font-serif text-[16px] leading-[29px] text-fg">
+        <div className="gp-scroll min-h-0 flex-1 overflow-y-auto px-6 py-5 md:p-8 md:pt-6">
+          <div className="mx-auto flex max-w-prose flex-col gap-4 font-serif text-[20px] leading-[36px] text-fg">
             {paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
