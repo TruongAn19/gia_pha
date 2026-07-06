@@ -1,10 +1,7 @@
 import { useMemo, useState } from 'react'
-import members from '../../members.json'
-import { loadMembers, allMembers, groupByGeneration } from '../data/genealogy'
+import { allMembers, groupByGeneration } from '../data/genealogy'
 import Icon from '../components/ui/Icon'
 import LoiTuaModal from '../components/LoiTuaModal'
-
-loadMembers(members) // idempotent
 
 // Lời tựa (trích từ gia phả gốc)
 export const PREFACE = [

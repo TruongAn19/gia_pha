@@ -31,6 +31,12 @@ const MEMBER_COLUMNS = [
   'gender',
 ]
 
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+
+function isUuid(value) {
+  return typeof value === 'string' && UUID_RE.test(value)
+}
+
 /**
  * Khung giao diện chung: Sidebar (desktop) / BottomTabBar (mobile) + nội dung.
  * Quản lý: điều hướng, mở Hồ sơ đầy đủ, và Modal Thêm/Sửa.
@@ -97,9 +103,9 @@ export default function AppShell() {
   // Map id -> id_temp, parent_id -> parent_id_temp cho khớp các hàm hiện có.
   useEffect(() => {
     if (membersLoading) return
-    if (membersError || !dbMembers.length) return // giữ dữ liệu members.json làm phương án dự phòng
+    if (membersError || !dbMembers.length) return
     loadMembers(dbMembers.map((m) => ({ ...m, id_temp: m.id, parent_id_temp: m.parent_id })))
-    // Bỏ hồ sơ đang mở nếu id cũ (numeric từ members.json) không còn khớp id Supabase
+    // Bỏ hồ sơ đang mở nếu id không còn khớp dữ liệu Supabase
     setProfileId((pid) => (pid && !dbMembers.some((m) => m.id === pid) ? null : pid))
     setDataVersion((v) => v + 1)
   }, [dbMembers, membersLoading, membersError])
@@ -123,10 +129,18 @@ export default function AppShell() {
     for (const k of MEMBER_COLUMNS) if (payload[k] !== undefined) row[k] = payload[k]
     try {
       if (modal.mode === 'add') {
-        row.parent_id = payload.parent_id_temp ?? null
+        const parentId = modal.parent?.id ?? payload.parent_id_temp ?? null
+        if (parentId && !isUuid(parentId)) {
+          throw new Error('Khong the luu: than phu chua co UUID Supabase.')
+        }
+        row.parent_id = parentId
         await sbAddMember(row)
       } else {
-        await sbUpdateMember(modal.member.id_temp, row)
+        const memberId = modal.member?.id ?? modal.member?.id_temp
+        if (!isUuid(memberId)) {
+          throw new Error('Khong the luu: thanh vien nay chua co UUID Supabase.')
+        }
+        await sbUpdateMember(memberId, row)
       }
     } catch (e) {
       alert('Lưu thất bại: ' + (e?.message || e))
@@ -137,7 +151,8 @@ export default function AppShell() {
   }
 
   // CHỈ admin mới có onAdd/onEdit -> component ẩn nút Thêm/Sửa khi thiếu handler
-  const adminHandlers = isAdmin ? { onAdd: openAdd, onEdit: openEdit } : {}
+  const canWriteMembers = isAdmin && !membersLoading && !membersError && dbMembers.length > 0
+  const adminHandlers = canWriteMembers ? { onAdd: openAdd, onEdit: openEdit } : {}
   const pageProps = { onOpenProfile: setProfileId, ...adminHandlers }
 
   // LỐI VÀO ĐĂNG NHẬP ẨN — người xem không thấy nút nào.

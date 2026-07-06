@@ -1,11 +1,8 @@
 import { useMemo } from 'react'
-import members from '../../members.json'
-import { loadMembers, allMembers, getChildrenInfo } from '../data/genealogy'
+import { allMembers, getChildrenInfo } from '../data/genealogy'
 import Icon from '../components/ui/Icon'
 import Badge from '../components/ui/Badge'
 import EmptyState from '../components/ui/EmptyState'
-
-loadMembers(members) // idempotent
 
 // Trích danh sách con trai gia phả ghi (đoạn "Các con … con trai", gộp dòng)
 function sonsListText(details) {

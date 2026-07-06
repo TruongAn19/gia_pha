@@ -1,7 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import members from '../../members.json'
 import {
-  loadMembers,
   allMembers,
   getChildren,
   getChildrenInfo,
@@ -13,8 +11,6 @@ import {
 import Icon from '../components/ui/Icon'
 import Badge from '../components/ui/Badge'
 import Pagination from '../components/ui/Pagination'
-
-loadMembers(members) // idempotent
 
 const PAGE_SIZE = 20
 

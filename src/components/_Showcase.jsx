@@ -1,14 +1,11 @@
 // XEM TRƯỚC TẠM THỜI các component dùng lại (sẽ bị thay bằng màn thật ở bước sau).
 import { useMemo, useState } from 'react'
-import members from '../../members.json'
-import { loadMembers, byId, getChildren, parseDetails } from '../data/genealogy'
+import { byId, getChildren, parseDetails } from '../data/genealogy'
 import Badge from './ui/Badge'
 import Field from './ui/Field'
 import EmptyState from './ui/EmptyState'
 import MemberRow from './MemberRow'
 import DetailPanel from './DetailPanel'
-
-loadMembers(members)
 
 function Section({ title, children }) {
   return (

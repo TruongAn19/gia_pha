@@ -1,13 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import members from '../../members.json'
-import { loadMembers } from '../data/genealogy'
 import { buildAgenda, fetchEvents, solarToLunar } from '../data/events'
 import { fmtSolar, weekdayName } from '../data/lunar'
 import Icon from '../components/ui/Icon'
 import Pagination from '../components/ui/Pagination'
 import AddEventModal from '../components/AddEventModal'
-
-loadMembers(members) // idempotent
 
 const PAGE_SIZE = 6
 const KIND = {

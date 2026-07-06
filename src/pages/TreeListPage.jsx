@@ -1,7 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import members from '../../members.json'
 import {
-  loadMembers,
   allMembers,
   byId,
   getChildren,
@@ -18,8 +16,6 @@ import MemberPreviewPanel from '../components/MemberPreviewPanel'
 import TreeDiagram from '../components/TreeDiagram'
 import MobileLineage from '../components/MobileLineage'
 import { useMediaQuery } from '../hooks/useMediaQuery'
-
-loadMembers(members) // idempotent
 
 // ---- helpers ----
 function statusOf(m) {
@@ -69,6 +65,15 @@ export default function TreeListPage({ onOpenProfile, onAdd, onEdit, focusId, da
     }
     return s
   })
+
+  useEffect(() => {
+    const fallbackId = rootIds[0]
+    if (!fallbackId) return
+    if (!selectedId || !byId(selectedId)) {
+      setSelectedId(fallbackId)
+      setExpanded((prev) => new Set([...prev, fallbackId]))
+    }
+  }, [rootIds, selectedId])
 
   const [genFilter, setGenFilter] = useState('all')
   const [statusFilter, setStatusFilter] = useState('all')

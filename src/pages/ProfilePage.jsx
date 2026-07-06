@@ -1,6 +1,4 @@
-import members from '../../members.json'
 import {
-  loadMembers,
   byId,
   getChildren,
   getChildrenInfo,
@@ -13,8 +11,6 @@ import Icon from '../components/ui/Icon'
 import Badge from '../components/ui/Badge'
 import EmptyState from '../components/ui/EmptyState'
 import DetailPanel from '../components/DetailPanel'
-
-loadMembers(members) // idempotent
 
 const isDaughter = (m) => /\bThị\b/i.test(m.name || '')
 const branchOf = (text) =>
