@@ -7,6 +7,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "test": "node src/data/genealogy.test.mjs",
+    "lint": "node scripts/lint-source.mjs",
+    "check": "node scripts/lint-source.mjs && node src/data/genealogy.test.mjs && vite build",
     "preview": "vite preview"
   },
   "dependencies": {

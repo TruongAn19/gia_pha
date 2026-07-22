@@ -5,10 +5,11 @@ import {
   groupByGeneration, searchMembers, normalizeDeathAnniversary, parseDetails,
   toLunarYear, deriveYears, getLifespan, getChildrenInfo, allMembers,
 } from './genealogy.js'
+import { currentLunarYear } from './lunar.js'
 
 const data = JSON.parse(readFileSync(new URL('../../members.json', import.meta.url), 'utf8'))
 const n = loadMembers(data)
-const CUR_LUNAR = 2025 // năm âm hiện tại (demo; thực tế lấy từ thư viện âm lịch UTC+7)
+const CUR_LUNAR = currentLunarYear()
 
 const line = (s = '') => console.log(s)
 line('================= TỔNG QUAN =================')
@@ -62,7 +63,11 @@ for (const id of IDS) {
 }
 // ---------- Kiểm chứng §8 ----------
 line('\n========== KIỂM CHỨNG §8 ==========')
-const ok = (cond, msg) => line(`  ${cond ? '✓' : '✗ THẤT BẠI'} ${msg}`)
+let failures = 0
+const ok = (cond, msg) => {
+  if (!cond) failures += 1
+  line(`  ${cond ? '✓' : '✗ THẤT BẠI'} ${msg}`)
+}
 
 // 8.1: ngo-nghiem (thất lạc) -> "Thất lạc", KHÔNG hưởng thọ
 const nghiem = getLifespan(deriveYears(byId('ngo-nghiem')), CUR_LUNAR)
@@ -89,3 +94,7 @@ const needFix = allMembers().filter((m) => getChildrenInfo(m.id_temp).dataQualit
 line(`  • Danh sách "Cần bổ sung" (missingSonRecords): ${needFix.length} thành viên`)
 
 line('\n================= XONG BƯỚC 1 (đã cập nhật §8) =================')
+if (failures > 0) {
+  line(`\n${failures} kiểm chứng thất bại.`)
+  process.exitCode = 1
+}

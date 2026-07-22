@@ -11,6 +11,7 @@ import Icon from '../components/ui/Icon'
 import Badge from '../components/ui/Badge'
 import EmptyState from '../components/ui/EmptyState'
 import DetailPanel from '../components/DetailPanel'
+import { currentLunarYear } from '../data/lunar'
 
 const isDaughter = (m) => /\bThị\b/i.test(m.name || '')
 const branchOf = (text) =>
@@ -24,7 +25,7 @@ const branchOf = (text) =>
  * Hồ sơ thành viên đầy đủ (frame lxflc + biến thể đang sống Ms8gu).
  * props: memberId, onBack, onOpenProfile(id), curLunarYear
  */
-export default function ProfilePage({ memberId, onBack, onOpenProfile, onEdit, onAdd, onViewOnTree, curLunarYear = 2025 }) {
+export default function ProfilePage({ memberId, onBack, onOpenProfile, onEdit, onAdd, onViewOnTree, curLunarYear = currentLunarYear() }) {
   const m = byId(memberId)
   if (!m) {
     return (

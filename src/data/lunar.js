@@ -156,6 +156,10 @@ export function solarToLunar(date) {
   return { day: d, month: m, year: y, leap: !!leap }
 }
 
+export function currentLunarYear(date = new Date()) {
+  return solarToLunar(date).year
+}
+
 /**
  * Ngày dương lịch kế tiếp (>= from) ứng với 1 ngày âm lịch (không kèm năm).
  * Trả về Date hoặc null.

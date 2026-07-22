@@ -47,6 +47,7 @@ export default function AppShell() {
     members: dbMembers,
     loading: membersLoading,
     error: membersError,
+    refetch: refetchMembers,
     addMember: sbAddMember,
     updateMember: sbUpdateMember,
   } = useMembers()
@@ -98,15 +99,23 @@ export default function AppShell() {
       return next
     })
   const [dataVersion, setDataVersion] = useState(0) // bump để làm mới UI sau khi sửa data
+  const [membersLoaded, setMembersLoaded] = useState(false)
 
   // Nạp dữ liệu từ Supabase vào store dùng chung (genealogy) mà mọi trang đang đọc.
   // Map id -> id_temp, parent_id -> parent_id_temp cho khớp các hàm hiện có.
   useEffect(() => {
-    if (membersLoading) return
-    if (membersError || !dbMembers.length) return
+    if (membersLoading) {
+      setMembersLoaded(false)
+      return
+    }
+    if (membersError) {
+      setMembersLoaded(false)
+      return
+    }
     loadMembers(dbMembers.map((m) => ({ ...m, id_temp: m.id, parent_id_temp: m.parent_id })))
     // Bỏ hồ sơ đang mở nếu id không còn khớp dữ liệu Supabase
     setProfileId((pid) => (pid && !dbMembers.some((m) => m.id === pid) ? null : pid))
+    setMembersLoaded(true)
     setDataVersion((v) => v + 1)
   }, [dbMembers, membersLoading, membersError])
 
@@ -183,9 +192,20 @@ export default function AppShell() {
 
   // đếm "Cần bổ sung" cho badge sidebar (tính lại sau mỗi lần sửa data)
   const missingCount = useMemo(
-    () => allMembers().filter((m) => getChildrenInfo(m.id_temp).dataQuality.missingSonRecords).length,
-    [dataVersion]
+    () =>
+      membersLoaded
+        ? allMembers().filter((m) => getChildrenInfo(m.id_temp).dataQuality.missingSonRecords).length
+        : 0,
+    [dataVersion, membersLoaded]
   )
+
+  const dataState = membersLoading || (!membersLoaded && !membersError)
+    ? 'loading'
+    : membersError
+      ? 'error'
+      : dbMembers.length === 0
+        ? 'empty'
+        : 'ready'
 
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-surface text-fg">
@@ -202,33 +222,39 @@ export default function AppShell() {
       </div>
 
       <main className="relative min-h-0 flex-1 overflow-hidden">
-        {/* Cây gia phả: LUÔN mounted, chỉ ẩn/hiện -> giữ nguyên cuộn + nhánh đang mở */}
-        <div className={!profileId && active === 'tree' ? 'h-full' : 'hidden'}>
-          <TreeListPage focusId={treeFocus} dataVersion={dataVersion} {...pageProps} />
-        </div>
+        {dataState !== 'ready' ? (
+          <DataStateScreen state={dataState} error={membersError} onRetry={refetchMembers} />
+        ) : (
+          <>
+            {/* Cây gia phả: LUÔN mounted, chỉ ẩn/hiện -> giữ nguyên cuộn + nhánh đang mở */}
+            <div className={!profileId && active === 'tree' ? 'h-full' : 'hidden'}>
+              <TreeListPage focusId={treeFocus} dataVersion={dataVersion} {...pageProps} />
+            </div>
 
-        {profileId ? (
-          <ProfilePage
-            key={`p-${profileId}-${dataVersion}`}
-            memberId={profileId}
-            onBack={() => setProfileId(null)}
-            onOpenProfile={setProfileId}
-            onViewOnTree={viewOnTree}
-            {...adminHandlers}
-          />
-        ) : active === 'overview' ? (
-          <OverviewPage dataVersion={dataVersion} />
-        ) : active === 'members' ? (
-          <MembersTablePage dataVersion={dataVersion} {...pageProps} />
-        ) : active === 'events' ? (
-          <EventsPage onOpenProfile={setProfileId} canEdit={isAdmin} dataVersion={dataVersion} />
-        ) : active === 'history' ? (
-          <ArticlesPage canEdit={isAdmin} dataVersion={dataVersion} />
-        ) : active === 'missing' && isAdmin ? (
-          <MissingDataPage key={`x-${dataVersion}`} onOpenProfile={setProfileId} onAdd={adminHandlers.onAdd} />
-        ) : active !== 'tree' ? (
-          <PlaceholderScreen title={NAV_TITLE[active]} />
-        ) : null}
+            {profileId ? (
+              <ProfilePage
+                key={`p-${profileId}-${dataVersion}`}
+                memberId={profileId}
+                onBack={() => setProfileId(null)}
+                onOpenProfile={setProfileId}
+                onViewOnTree={viewOnTree}
+                {...adminHandlers}
+              />
+            ) : active === 'overview' ? (
+              <OverviewPage dataVersion={dataVersion} />
+            ) : active === 'members' ? (
+              <MembersTablePage dataVersion={dataVersion} {...pageProps} />
+            ) : active === 'events' ? (
+              <EventsPage onOpenProfile={setProfileId} canEdit={isAdmin} dataVersion={dataVersion} />
+            ) : active === 'history' ? (
+              <ArticlesPage canEdit={isAdmin} dataVersion={dataVersion} />
+            ) : active === 'missing' && isAdmin ? (
+              <MissingDataPage key={`x-${dataVersion}`} onOpenProfile={setProfileId} onAdd={adminHandlers.onAdd} />
+            ) : active !== 'tree' ? (
+              <PlaceholderScreen title={NAV_TITLE[active]} />
+            ) : null}
+          </>
+        )}
       </main>
 
       <div className="md:hidden">
@@ -269,6 +295,46 @@ function PlaceholderScreen({ title }) {
       <h1 className="mt-5 font-heading text-3xl text-fg">{title}</h1>
       <p className="mt-2 max-w-md text-fg-2">Màn này sẽ được dựng ở các bước sau (DESIGN_NOTES §5).</p>
       <div className="h-24 md:hidden" />
+    </div>
+  )
+}
+
+function DataStateScreen({ state, error, onRetry }) {
+  const copy = {
+    loading: {
+      icon: 'tree',
+      title: 'Đang tải dữ liệu gia phả',
+      description: 'Đang kết nối Supabase và chuẩn bị cây dữ liệu.',
+    },
+    error: {
+      icon: 'alert',
+      title: 'Không tải được dữ liệu',
+      description: error || 'Vui lòng kiểm tra cấu hình Supabase hoặc kết nối mạng.',
+    },
+    empty: {
+      icon: 'users',
+      title: 'Chưa có dữ liệu thành viên',
+      description: 'Bảng members đang trống. Khi có bản ghi đầu tiên, cây gia phả sẽ hiển thị tại đây.',
+    },
+  }[state]
+
+  return (
+    <div className="flex h-full items-center justify-center px-6 py-16 text-center">
+      <div className="max-w-md">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-muted text-accent">
+          <Icon name={copy.icon} size={26} />
+        </div>
+        <h1 className="mt-5 font-heading text-3xl text-fg">{copy.title}</h1>
+        <p className="mt-2 text-sm leading-6 text-fg-2">{copy.description}</p>
+        {state === 'error' && (
+          <button
+            onClick={onRetry}
+            className="mt-5 rounded-btn bg-accent px-5 py-2 text-sm font-semibold text-fg-inv hover:brightness-110"
+          >
+            Thử lại
+          </button>
+        )}
+      </div>
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import { deriveYears, getLifespan, normalizeDeathAnniversary } from '../data/genealogy'
+import { currentLunarYear } from '../data/lunar'
 import Icon from './ui/Icon'
 import Badge from './ui/Badge'
 
@@ -9,7 +10,7 @@ import Badge from './ui/Badge'
  *
  * props: member, onClose, onViewDetail(member), onEdit(member), curLunarYear
  */
-export default function MemberPreviewPanel({ member, onClose, onViewDetail, onEdit, onAddChild, curLunarYear = 2025 }) {
+export default function MemberPreviewPanel({ member, onClose, onViewDetail, onEdit, onAddChild, curLunarYear = currentLunarYear() }) {
   if (!member) return null
 
   const dy = deriveYears(member)

@@ -4,6 +4,7 @@ import {
   getLifespan,
   normalizeDeathAnniversary,
 } from '../data/genealogy'
+import { currentLunarYear } from '../data/lunar'
 import Icon from './ui/Icon'
 import EmptyState from './ui/EmptyState'
 
@@ -14,9 +15,9 @@ import EmptyState from './ui/EmptyState'
  * (Phối ngẫu đã bỏ — thông tin vợ nằm trong Tiểu sử.)
  * Yêu cầu: đã gọi loadMembers() trước đó.
  *
- * props: member (object từ genealogy), curLunarYear (mặc định 2025)
+ * props: member (object từ genealogy), curLunarYear (mặc định năm âm lịch hiện tại)
  */
-export default function DetailPanel({ member, curLunarYear = 2025, onOpenMember }) {
+export default function DetailPanel({ member, curLunarYear = currentLunarYear(), onOpenMember }) {
   if (!member) {
     return (
       <div className="rounded-card border border-hairline bg-card p-5">
@@ -114,4 +115,3 @@ function Row({ label, value, muted = false }) {
     </div>
   )
 }
-
